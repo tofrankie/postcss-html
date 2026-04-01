@@ -7,6 +7,9 @@
 [![NPM downloads](https://img.shields.io/npm/dy/postcss-html.svg)](http://www.npmtrends.com/postcss-html)
 [![Build Status](https://github.com/ota-meshi/postcss-html/workflows/CI/badge.svg?branch=master)](https://github.com/ota-meshi/postcss-html/actions?query=workflow%3ACI)
 
+> [!NOTE]
+> Fork from [be13165](https://github.com/ota-meshi/postcss-html/commit/be131650206338d73933d08726a52392835eb096) in [postcss-html](https://github.com/ota-meshi/postcss-html).(v1.8.1)
+
 <img align="right" width="95" height="95"
  title="Philosopher’s stone, logo of PostCSS"
  src="http://postcss.github.io/postcss/logo.svg">
@@ -39,19 +42,21 @@ If you want support SCSS/SASS/LESS/SugarSS syntax, you need to install the corre
 ## Use Cases
 
 ```js
-const postcss = require('postcss');
-const syntax = require('postcss-html')({
-    // syntax for parse scss (non-required options)
-    scss: require('postcss-scss'),
-    // syntax for parse less (non-required options)
-    less: require('postcss-less'),
-    // syntax for parse css blocks (non-required options)
-    css: require('postcss-safe-parser'),
+const postcss = require("postcss");
+const syntax = require("postcss-html")({
+	// syntax for parse scss (non-required options)
+	scss: require("postcss-scss"),
+	// syntax for parse less (non-required options)
+	less: require("postcss-less"),
+	// syntax for parse css blocks (non-required options)
+	css: require("postcss-safe-parser"),
 });
-postcss(plugins).process(source, { syntax: syntax }).then(function (result) {
-    // An alias for the result.css property. Use it with syntaxes that generate non-CSS output.
-    result.content
-});
+postcss(plugins)
+	.process(source, { syntax: syntax })
+	.then(function (result) {
+		// An alias for the result.css property. Use it with syntaxes that generate non-CSS output.
+		result.content;
+	});
 ```
 
 If you want support SCSS/SASS/LESS/SugarSS syntax, you need to install these module:
@@ -68,33 +73,33 @@ If you want support SCSS/SASS/LESS/SugarSS syntax, you need to install these mod
 
 ```js
 const options = {
-    rules: [
-        {
-            // custom language
-            test: /^postcss$/i,
-            lang: 'scss'
-        },
-        {
-            // custom language
-            test: /^customcss$/i,
-            lang: 'custom'
-        },
-    ],
+	rules: [
+		{
+			// custom language
+			test: /^postcss$/i,
+			lang: "scss",
+		},
+		{
+			// custom language
+			test: /^customcss$/i,
+			lang: "custom",
+		},
+	],
 
-    // custom parser for CSS (using `postcss-safe-parser`)
-    css: 'postcss-safe-parser',
-    // custom parser for SASS (PostCSS-compatible syntax.)
-    sass: require('postcss-sass'),
-    // custom parser for SCSS (by module name)
-    scss: 'postcss-scss',
-    // custom parser for LESS (by module path)
-    less: require.resolve('./node_modules/postcss-less'),
-    // custom parser for SugarSS
-    sugarss: require('sugarss'),
-    // custom parser for custom language
-    custom: require('postcss-custom-syntax'),
-}
-const syntax = require('postcss-html')(options);
+	// custom parser for CSS (using `postcss-safe-parser`)
+	css: "postcss-safe-parser",
+	// custom parser for SASS (PostCSS-compatible syntax.)
+	sass: require("postcss-sass"),
+	// custom parser for SCSS (by module name)
+	scss: "postcss-scss",
+	// custom parser for LESS (by module path)
+	less: require.resolve("./node_modules/postcss-less"),
+	// custom parser for SugarSS
+	sugarss: require("sugarss"),
+	// custom parser for custom language
+	custom: require("postcss-custom-syntax"),
+};
+const syntax = require("postcss-html")(options);
 ```
 
 ## Turning PostCSS off from within your HTML
@@ -103,22 +108,26 @@ PostCSS can be temporarily turned off by using special comments in your HTML. Fo
 
 ```html
 <html>
-<body>
-<!-- postcss-ignore -->
-<a style="color: red;" description="style is not parsed."></a>
+	<body>
+		<!-- postcss-ignore -->
+		<a style="color: red;" description="style is not parsed."></a>
 
-<a style="color: red;" description="style is parsed."></a>
+		<a style="color: red;" description="style is parsed."></a>
+	</body>
+</html>
 ```
 
 ```html
 <html>
-<body>
-<!-- postcss-disable -->
-<a style="color: red;" description="style is not parsed."></a>
-<a style="color: red;" description="style is not parsed."></a>
-<!-- postcss-enable -->
+	<body>
+		<!-- postcss-disable -->
+		<a style="color: red;" description="style is not parsed."></a>
+		<a style="color: red;" description="style is not parsed."></a>
+		<!-- postcss-enable -->
 
-<a style="color: red;" description="style is parsed."></a>
+		<a style="color: red;" description="style is parsed."></a>
+	</body>
+</html>
 ```
 
 ## Linting with Stylelint
@@ -129,12 +138,12 @@ You can use it by configuring your `stylelint` config as follows:
 
 ```json
 {
-    "overrides": [
-        {
-            "files": ["*.html", "**/*.html"],
-            "customSyntax": "postcss-html"
-        }
-    ]
+	"overrides": [
+		{
+			"files": ["*.html", "**/*.html"],
+			"customSyntax": "postcss-html"
+		}
+	]
 }
 ```
 
@@ -142,17 +151,17 @@ You can use it more easily if you use an already configured sharable config.
 
 ```diff
 {
-+    "extends": [
-+        "stylelint-config-html",
-         // If you are using Vue.
-+        "stylelint-config-recommended-vue"
-+    ],
--    "overrides": [
--        {
--            "files": ["*.html", "**/*.html"],
--            "customSyntax": "postcss-html"
--        }
--    ]
++  "extends": [
++    "stylelint-config-html",
+     // If you are using Vue.
++    "stylelint-config-recommended-vue"
++  ],
+-  "overrides": [
+-    {
+-      "files": ["*.html", "**/*.html"],
+-      "customSyntax": "postcss-html"
+-    }
+-  ]
 }
 ```
 
