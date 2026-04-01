@@ -1,11 +1,11 @@
 # PostCSS HTML Syntax
 
-[![NPM license](https://img.shields.io/npm/l/postcss-html.svg)](https://www.npmjs.com/package/postcss-html)
-[![NPM version](https://img.shields.io/npm/v/postcss-html.svg?style=flat-square)](https://www.npmjs.com/package/postcss-html)
-[![NPM downloads](https://img.shields.io/npm/dw/postcss-html.svg)](http://www.npmtrends.com/postcss-html)
-[![NPM downloads](https://img.shields.io/npm/dm/postcss-html.svg)](http://www.npmtrends.com/postcss-html)
-[![NPM downloads](https://img.shields.io/npm/dy/postcss-html.svg)](http://www.npmtrends.com/postcss-html)
-[![Build Status](https://github.com/ota-meshi/postcss-html/workflows/CI/badge.svg?branch=master)](https://github.com/ota-meshi/postcss-html/actions?query=workflow%3ACI)
+[![NPM license](https://img.shields.io/npm/l/@tofrankie/postcss-html.svg)](https://www.npmjs.com/package/@tofrankie/postcss-html)
+[![NPM version](https://img.shields.io/npm/v/@tofrankie/postcss-html.svg?style=flat-square)](https://www.npmjs.com/package/@tofrankie/postcss-html)
+[![NPM downloads](https://img.shields.io/npm/dw/@tofrankie/postcss-html.svg)](http://www.npmtrends.com/@tofrankie/postcss-html)
+[![NPM downloads](https://img.shields.io/npm/dm/@tofrankie/postcss-html.svg)](http://www.npmtrends.com/@tofrankie/postcss-html)
+[![NPM downloads](https://img.shields.io/npm/dy/@tofrankie/postcss-html.svg)](http://www.npmtrends.com/@tofrankie/postcss-html)
+[![Build Status](https://github.com/tofrankie/postcss-html/workflows/CI/badge.svg?branch=master)](https://github.com/tofrankie/postcss-html/actions?query=workflow%3ACI)
 
 > [!NOTE]
 > Fork from [be13165](https://github.com/ota-meshi/postcss-html/commit/be131650206338d73933d08726a52392835eb096) in [postcss-html](https://github.com/ota-meshi/postcss-html).(v1.8.1)

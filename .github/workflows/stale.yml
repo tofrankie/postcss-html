@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   stale:
-    if: github.repository == 'ota-meshi/postcss-html'
+    if: github.repository == 'tofrankie/postcss-html'
     name: Close stale issues with missing information
     runs-on: ubuntu-latest
     steps:
