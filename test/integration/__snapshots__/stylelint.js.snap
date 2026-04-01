@@ -24,7 +24,7 @@ exports[`Integration with stylelint stylelint --fix with html test.html 1`] = `
 		</style>
 	</head>
 	<body>
-		<div style=\\"font-family: \\"serif serif\\";\\"></div>
+		<div style=\\"font-family: \\"serif serif\\"\\"></div>
 	</body>
 </html>
 "
@@ -89,7 +89,7 @@ const buttonPointerEvents = computed(() =>
 
 exports[`Integration with stylelint stylelint --fix with html test-with-stylus.vue 1`] = `
 "<template>
-  <div style=\\"display: flex;\\"/>
+  <div style=\\"display: flex\\"/>
 </template>
 <script>
 </script>

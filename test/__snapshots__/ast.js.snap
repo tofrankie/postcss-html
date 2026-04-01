@@ -93,6 +93,7 @@ input {
 	let value
 </script>
 <input class:over-100={value > 100} bind:value={value} style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -138,6 +139,7 @@ input {
         "after": "",
         "codeBefore": "\\">
 <input class:over-100={  ((value > 100) )  } bind:value={value} style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -183,6 +185,7 @@ input {
         "after": "",
         "codeBefore": "\\">
 <input class={ \`\${(value > 100) ? 'foo' : 'bar'}\`  } style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -228,6 +231,7 @@ input {
         "after": "",
         "codeBefore": "\\">
 <input class={ {foo: (value > 100) ? 'foo' : 'bar'}.foo  } style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -342,7 +346,7 @@ exports[`AST tests complex.astro ast 1`] = `
 Object {
   "inputs": Array [
     Object {
-      "css": "color: #00;",
+      "css": "color: #00",
       "file": "/complex.astro",
       "hasBOM": false,
     },
@@ -352,7 +356,7 @@ let value, input, style, bar
 const foo = 100 <input &&( style=\\"color: #ff;\\" )&& bar > 42
 ---
 
-<input class={\`\${value > 100 ? 'over-100' : ''}\`} style=\\"color: #00;\\" />
+<input class={\`\${value > 100 ? 'over-100' : ''}\`} style=\\"color: #00\\" />
 ",
       "file": "/complex.astro",
       "hasBOM": false,
@@ -372,9 +376,9 @@ const foo = 100 <input &&( style=\\"color: #ff;\\" )&& bar > 42
           },
           "source": Object {
             "end": Object {
-              "column": 68,
+              "column": 67,
               "line": 6,
-              "offset": 166,
+              "offset": 165,
             },
             "inputId": 0,
             "start": Object {
@@ -397,13 +401,14 @@ const foo = 100 <input &&( style=\\"color: #ff;\\" )&& bar > 42
 ---
 
 <input class={\`\${value > 100 ? 'over-100' : ''}\`} style=\\"",
-        "semicolon": true,
+        "inlineMultiline": false,
+        "semicolon": false,
       },
       "source": Object {
         "end": Object {
-          "column": 69,
+          "column": 68,
           "line": 6,
-          "offset": 166,
+          "offset": 165,
         },
         "inputId": 0,
         "start": Object {
@@ -779,6 +784,7 @@ a {
     <!--postcss-ignore-->
     <div style=\\"color: red\\">
       <div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -832,6 +838,7 @@ a {
     <!--postcss-ignore-->
     <input>
     <div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -884,6 +891,7 @@ a {
     <!--postcss-ignore-->
     <div></div>
     <div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -935,6 +943,7 @@ a {
     </div>
     <div><!--postcss-ignore--></div>
     <div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -986,6 +995,7 @@ a {
     </div>
     <!--postcss-ignore--><!--foo-->
     <div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -1354,12 +1364,12 @@ exports[`AST tests test.astro ast 1`] = `
 Object {
   "inputs": Array [
     Object {
-      "css": "color: red;",
+      "css": "color: red",
       "file": "/test.astro",
       "hasBOM": false,
     },
     Object {
-      "css": "color: green;",
+      "css": "color: green",
       "file": "/test.astro",
       "hasBOM": false,
     },
@@ -1378,8 +1388,8 @@ let value
 const foo = '<input style=\\"color: blue;\\">'
 ---
 
-<input class={value > 100 ? 'over-100' : ''} style=\\"color: red;\\" />
-<input class={  ((value > 100) )   ? 'over-100' : ''} style=\\"color: green;\\" />
+<input class={value > 100 ? 'over-100' : ''} style=\\"color: red\\" />
+<input class={  ((value > 100) )   ? 'over-100' : ''} style=\\"color: green\\" />
 
 <style>
 input {
@@ -1405,9 +1415,9 @@ input {
           },
           "source": Object {
             "end": Object {
-              "column": 63,
+              "column": 62,
               "line": 7,
-              "offset": 145,
+              "offset": 144,
             },
             "inputId": 0,
             "start": Object {
@@ -1429,13 +1439,14 @@ const foo = '<input style=\\"color: blue;\\">'
 ---
 
 <input class={value > 100 ? 'over-100' : ''} style=\\"",
-        "semicolon": true,
+        "inlineMultiline": false,
+        "semicolon": false,
       },
       "source": Object {
         "end": Object {
-          "column": 64,
+          "column": 63,
           "line": 7,
-          "offset": 145,
+          "offset": 144,
         },
         "inputId": 0,
         "start": Object {
@@ -1459,15 +1470,15 @@ const foo = '<input style=\\"color: blue;\\">'
           },
           "source": Object {
             "end": Object {
-              "column": 74,
+              "column": 73,
               "line": 8,
-              "offset": 224,
+              "offset": 222,
             },
             "inputId": 0,
             "start": Object {
               "column": 62,
               "line": 8,
-              "offset": 211,
+              "offset": 210,
             },
           },
           "type": "decl",
@@ -1478,19 +1489,20 @@ const foo = '<input style=\\"color: blue;\\">'
         "after": "",
         "codeBefore": "\\" />
 <input class={  ((value > 100) )   ? 'over-100' : ''} style=\\"",
-        "semicolon": true,
+        "inlineMultiline": false,
+        "semicolon": false,
       },
       "source": Object {
         "end": Object {
-          "column": 75,
+          "column": 74,
           "line": 8,
-          "offset": 224,
+          "offset": 222,
         },
         "inputId": 0,
         "start": Object {
           "column": 62,
           "line": 8,
-          "offset": 211,
+          "offset": 210,
         },
       },
       "type": "root",
@@ -1515,13 +1527,13 @@ const foo = '<input style=\\"color: blue;\\">'
                 "end": Object {
                   "column": 12,
                   "line": 12,
-                  "offset": 258,
+                  "offset": 256,
                 },
                 "inputId": 0,
                 "start": Object {
                   "column": 2,
                   "line": 12,
-                  "offset": 247,
+                  "offset": 245,
                 },
               },
               "type": "decl",
@@ -1540,13 +1552,13 @@ const foo = '<input style=\\"color: blue;\\">'
             "end": Object {
               "column": 1,
               "line": 13,
-              "offset": 260,
+              "offset": 258,
             },
             "inputId": 0,
             "start": Object {
               "column": 1,
               "line": 11,
-              "offset": 238,
+              "offset": 236,
             },
           },
           "type": "rule",
@@ -1567,13 +1579,13 @@ const foo = '<input style=\\"color: blue;\\">'
         "end": Object {
           "column": 1,
           "line": 14,
-          "offset": 261,
+          "offset": 259,
         },
         "inputId": 0,
         "start": Object {
           "column": 1,
           "line": 11,
-          "offset": 238,
+          "offset": 236,
         },
       },
       "type": "root",
@@ -1748,6 +1760,7 @@ Object {
 	</head>
 	<body>
 		<div style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -1862,6 +1875,7 @@ Object {
 	$: color = bgOpacity < 0.6 ? '#000' : '#fff';
 </script>
 <p style=\\"",
+        "inlineMultiline": false,
         "semicolon": true,
       },
       "source": Object {
@@ -1909,6 +1923,7 @@ Object {
 ",
         "codeBefore": "\\">This is a paragraph.</p>
 <p style=\\"",
+        "inlineMultiline": false,
         "semicolon": false,
       },
       "source": Object {
@@ -2405,6 +2420,7 @@ Object {
 	$: styleOpacity = \`--opacity: \${bgOpacity};\`
 </script>
 <p style=\\"",
+        "inlineMultiline": false,
         "semicolon": true,
       },
       "source": Object {

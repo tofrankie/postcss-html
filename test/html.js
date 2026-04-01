@@ -3,6 +3,7 @@
 const expect = require("chai").expect;
 const postcss = require("postcss");
 const syntax = require("../");
+const stringify = require("../lib/stringify");
 
 describe("html tests", () => {
 	it("Invalid HTML", () => {
@@ -16,7 +17,7 @@ describe("html tests", () => {
 	});
 
 	it("less", () => {
-		const html = [
+		const input = [
 			"<html>",
 			"<head>",
 			'<style type="text/less">',
@@ -26,17 +27,32 @@ describe("html tests", () => {
 			"</style>",
 			"</head>",
 			"<body>",
-			'<div style="font-family: serif, serif;">',
+			'<div style="font-family:serif, serif;">',
 			"</div>",
 			"</body>",
 			"</html>",
 		].join("\n");
-		const document = syntax.parse(html, {
+		const expected = [
+			"<html>",
+			"<head>",
+			'<style type="text/less">',
+			"a {",
+			"\tdisplay: flex;",
+			"}",
+			"</style>",
+			"</head>",
+			"<body>",
+			'<div style="font-family: serif, serif">',
+			"</div>",
+			"</body>",
+			"</html>",
+		].join("\n");
+		const document = syntax.parse(input, {
 			from: "less.html",
 		});
 		expect(document.source).to.haveOwnProperty("lang", "html");
 		expect(document.nodes).to.have.lengthOf(2);
-		expect(document.toString()).equal(html);
+		expect(document.toString()).equal(expected);
 	});
 
 	it("stringify for append node", () => {
@@ -402,5 +418,58 @@ describe("html tests", () => {
 		expect(document.source).to.haveOwnProperty("lang", "html");
 		expect(document.nodes).to.be.lengthOf(0);
 		expect(document.toString()).equal(html);
+	});
+
+	it("inline style single-line: declarations joined with '; ', no trailing semicolon", () => {
+		const input = [
+			"<body>",
+			'<div style="color:red;font-size: 16px; position-try-fallbacks: none;">',
+			"Hello",
+			"</div>",
+			"</body>",
+		].join("\n");
+		const expected = [
+			"<body>",
+			'<div style="color: red; font-size: 16px; position-try-fallbacks: none">',
+			"Hello",
+			"</div>",
+			"</body>",
+		].join("\n");
+		const document = syntax.parse(input, { from: "inline-single.html" });
+		expect(document.toString()).equal(expected);
+	});
+
+	it("inline style multiline keeps round-trip", () => {
+		const html = [
+			"<!doctype html>",
+			"<html><body><div",
+			'\tstyle="',
+			"\t\tcolor: red;",
+			"\t\tfont-size: 16px;",
+			'\t"',
+			">Hello</div></body></html>",
+		].join("\n");
+		const document = syntax.parse(html, { from: "inline-multi.html" });
+		expect(document.toString()).equal(html);
+	});
+
+	it("inline style with comment in single-line stringify", () => {
+		const input = '<a style="color: red; /*c*/;"></a>';
+		const document = syntax.parse(input, { from: "inline-comment.html" });
+		const out = [];
+		stringify(document.first, function (chunk) {
+			out.push(chunk);
+		});
+		expect(out.join("")).equal("color: red; /*c*/");
+	});
+
+	it("stringify non-document inline root formats single-line CSS", () => {
+		const input = '<a style="color: red; display: block;"></a>';
+		const document = syntax.parse(input, { from: "inline-nd.html" });
+		const out = [];
+		stringify(document.first, function (chunk) {
+			out.push(chunk);
+		});
+		expect(out.join("")).equal("color: red; display: block");
 	});
 });
